@@ -1,0 +1,137 @@
+/* Container styling */
+.profile-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Back button styling */
+.back-button {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+/* Profile header (avatar, name, bio) */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #f0f0f0;
+}
+
+.bio {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.location {
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.github-link {
+    color: #0366d6;
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
+
+.github-link:hover {
+    text-decoration: underline;
+}
+
+/* Stats section (followers, following, repos) */
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Repositories list styling */
+.repos-section {
+    margin-top: 2rem;
+}
+
+.repo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.repo-item {
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.repo-link {
+    font-weight: bold;
+    color: #0366d6;
+    text-decoration: none;
+}
+
+.repo-link:hover {
+    text-decoration: underline;
+}
+
+.repo-description {
+    color: #555;
+    margin: 0.5rem 0;
+}
+
+.repo-stats {
+    display: flex;
+    gap: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Loading, error, and not-found states */
+.loading, .error, .not-found {
+    text-align: center;
+    margin: 2rem;
+    font-size: 1.2rem;
+}
+
+.error {
+    color: #d73a49;
+}
