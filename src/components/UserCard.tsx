@@ -1,6 +1,6 @@
-// UserCard.tsx
 import React from 'react';
 import './UserCard.css';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 interface UserCardProps {
     user: {
@@ -21,14 +21,13 @@ export const UserCard = ({ user }: UserCardProps) => {
             />
             <div className="user-info">
                 <h4 className="user-name">{user.login}</h4>
-                <a 
-                    href={user.html_url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                {/* Replace <a> with <Link> to avoid full page reload */}
+                <Link 
+                    to={`/user/${user.login}`} // Navigates to /user/username
                     className="profile-link"
                 >
                     View Profile
-                </a>
+                </Link>
             </div>
         </div>
     );

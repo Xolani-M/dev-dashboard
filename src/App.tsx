@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import { SearchBar } from './components/SearchBar';
 import { SearchResultsList } from './components/SearchResultsList';
+import UserProfile from './pages/UserProfile';
 
 // HOME PAGE COMPONENT
 const HomePage = () => {
@@ -19,17 +20,6 @@ const HomePage = () => {
     );
 };
 
-// USER PROFILE PAGE COMPONENT (placeholder for now)
-const UserProfilePage = () => {
-    return (
-        <div className="page">
-            <h1>User Profile</h1>
-            <p>This will show detailed user info</p>
-            <Link to="/">← Back to Home</Link>
-        </div>
-    );
-};
-
 // ⭐ FAVORITES PAGE COMPONENT (placeholder for now)
 const FavoritesPage = () => {
     return (
@@ -40,7 +30,7 @@ const FavoritesPage = () => {
     );
 };
 
-//NAVIGATION COMPONENT
+// NAVIGATION COMPONENT
 const Navigation = () => {
     return (
         <nav className="navigation">
@@ -58,7 +48,7 @@ function App() {
                 <Navigation /> 
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/user/:username" element={<UserProfilePage />} />
+                    <Route path="/user/:username" element={<UserProfile />} /> {/* Updated! */}
                     <Route path="/favorites" element={<FavoritesPage />} />
                 </Routes>
             </div>
