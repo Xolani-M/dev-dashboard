@@ -1,4 +1,3 @@
-import React from 'react';
 import "./SearchResultsList.css";
 import { SearchResults } from './SearchResults';
 
