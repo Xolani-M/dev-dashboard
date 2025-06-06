@@ -70,6 +70,23 @@ const FavoritesPage = () => {
                     <p style={{ color: '#666', fontSize: '14px', marginBottom: '15px' }}>
                         ✅ Your {favorites.length} favorite{favorites.length !== 1 ? 's are' : ' is'} automatically saved in your browser
                     </p>
+
+// FAVORITES PAGE COMPONENT
+const FavoritesPage = () => {
+    const { favorites, removeFromFavorites } = useFavorites();
+
+    return (
+        <div className="page">
+            <h1>Favorite Developers ({favorites.length})</h1>
+            <Link to="/">← Back to Home</Link>
+            
+            {favorites.length === 0 ? (
+                <p style={{ marginTop: '20px', color: '#666' }}>
+                    No favorite developers yet. Search for users and add them to favorites!
+                </p>
+            ) : (
+                <div style={{ marginTop: '20px' }}>
+
                     {favorites.map(user => (
                         <div key={user.id} className="user-card" style={{ marginBottom: '10px' }}>
                             <img 
@@ -108,7 +125,7 @@ const FavoritesPage = () => {
     );
 };
 
-// NAVIGATION COMPONENT
+// NAVIGATION COMPONENT (now shows favorites count)
 const Navigation = () => {
     const { getFavoritesCount } = useFavorites();
     
@@ -122,7 +139,7 @@ const Navigation = () => {
     );
 };
 
-// MAIN APP COMPONENT
+// MAIN APP COMPONENT (wrapped with Context Provider)
 function App() {
     return (
         <FavoritesProvider>

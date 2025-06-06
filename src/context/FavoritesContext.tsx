@@ -1,5 +1,7 @@
-// FavoritesContext.tsx
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+
 
 // Define the structure of a GitHub user (for favorites)
 interface GitHubUser {
@@ -16,6 +18,7 @@ interface FavoritesContextType {
   removeFromFavorites: (userId: number) => void;
   isFavorite: (userId: number) => boolean;
   getFavoritesCount: () => number;
+
   clearAllFavorites: () => void;
 }
 
@@ -23,6 +26,14 @@ interface FavoritesContextType {
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
 // Create a custom hook to use the context easily
+
+}
+
+// Create the Context with undefined as default (This create a container that will hold shared data)
+const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+
+// Create a custom hook to use the context easily (This makes it easy to access our context data)
+
 export const useFavorites = () => {
   const context = useContext(FavoritesContext);
   if (!context) {
@@ -76,11 +87,15 @@ const saveFavoritesToStorage = (favorites: GitHubUser[]): void => {
 };
 
 // Create the Provider component that will wrap our app
+// Create the Provider component that will wrap our app
+//This wraps our entire app and provides the favorites data to all child components
+
 interface FavoritesProviderProps {
   children: ReactNode;
 }
 
 export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
+
   // Initialize state with data from localStorage
   const [favorites, setFavorites] = useState<GitHubUser[]>(() => {
     // This function runs only once when component mounts
@@ -92,6 +107,11 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     saveFavoritesToStorage(favorites);
   }, [favorites]); // This runs every time favorites array changes
 
+    
+  // State to hold our favorites
+  const [favorites, setFavorites] = useState<GitHubUser[]>([]);
+
+
   // Function to add a user to favorites
   const addToFavorites = (user: GitHubUser) => {
     setFavorites(prev => {
@@ -100,20 +120,27 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
       if (isAlreadyFavorite) {
         return prev; // Don't add if already exists
       }
+
       
       const newFavorites = [...prev, user];
       // No need to manually save here - useEffect will handle it
       return newFavorites;
+
+      return [...prev, user]; // Add to favorites
+
     });
   };
 
   // Function to remove a user from favorites
   const removeFromFavorites = (userId: number) => {
+
     setFavorites(prev => {
       const newFavorites = prev.filter(user => user.id !== userId);
       // No need to manually save here - useEffect will handle it
       return newFavorites;
     });
+
+    setFavorites(prev => prev.filter(user => user.id !== userId));
   };
 
   // Function to check if a user is in favorites
@@ -126,11 +153,13 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     return favorites.length;
   };
 
+
   // Function to clear all favorites (bonus feature)
   const clearAllFavorites = () => {
     setFavorites([]);
     // useEffect will automatically save the empty array to localStorage
   };
+
 
   // The value object that will be provided to all child components
   const value: FavoritesContextType = {
@@ -139,7 +168,8 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     removeFromFavorites,
     isFavorite,
     getFavoritesCount,
-    clearAllFavorites
+    clearAllFavorites,
+    getFavoritesCount
   };
 
   return (
