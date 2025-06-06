@@ -1,5 +1,3 @@
-// SearchResults.tsx
-import React from 'react';
 import { UserCard } from './UserCard';
 
 interface SearchResultsProps {
