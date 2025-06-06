@@ -63,9 +63,7 @@ interface FavoritesProviderProps {
 }
 
 export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
-  const [favorites, setFavorites] = useState<GitHubUser[]>(() => {
-    return loadFavoritesFromStorage();
-  });
+  const [favorites, setFavorites] = useState<GitHubUser[]>(() => loadFavoritesFromStorage());
 
   useEffect(() => {
     saveFavoritesToStorage(favorites);
@@ -82,17 +80,11 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     setFavorites(prev => prev.filter(user => user.id !== userId));
   };
 
-  const isFavorite = (userId: number) => {
-    return favorites.some(user => user.id === userId);
-  };
+  const isFavorite = (userId: number) => favorites.some(user => user.id === userId);
 
-  const getFavoritesCount = () => {
-    return favorites.length;
-  };
+  const getFavoritesCount = () => favorites.length;
 
-  const clearAllFavorites = () => {
-    setFavorites([]);
-  };
+  const clearAllFavorites = () => setFavorites([]);
 
   const value: FavoritesContextType = {
     favorites,
@@ -103,9 +95,5 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     clearAllFavorites,
   };
 
-  return (
-    <FavoritesContext.Provider value={value}>
-      {children}
-    </FavoritesContext.Provider>
-  );
+  return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
 };
