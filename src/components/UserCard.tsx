@@ -1,4 +1,3 @@
-import React from 'react';
 import './UserCard.css';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../context/FavoritesContext';
