@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import type { ReactNode } from 'react';
 
 interface GitHubUser {
   id: number;
