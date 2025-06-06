@@ -1,6 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+
 import axios from "axios";
 
 interface SearchBarProps {
